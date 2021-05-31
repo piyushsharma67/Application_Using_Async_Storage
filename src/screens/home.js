@@ -4,11 +4,11 @@ import {connect} from 'react-redux'
 import {ResetFunc} from '../Redux/actions'
 
 const HomeScreen=(props)=>{   
-    useEffect(()=>{
-        if(isLoggedIn!=true){
-            navigation.navigate('login')
-        }
-    },[isLoggedIn]) 
+    // useEffect(()=>{
+    //     if(isLoggedIn!=true){
+    //         navigation.navigate('login')
+    //     }
+    // },[isLoggedIn]) 
     return (
         <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
             <Text>Hi this is home Screen</Text>
