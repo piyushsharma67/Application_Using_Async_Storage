@@ -14,9 +14,9 @@ const signUpScreen=(props)=>{
 
 
    useEffect(()=>{
-       if(props.isSignedUp){
-        props.navigation.navigate("login")
-        
+       if(props.isSignedUp==true){
+        console.log("isSignedUp",props.isSignedUp)
+        props.navigation.navigate("login")        
     }      
    },[props.isSignedUp])
 
@@ -56,6 +56,7 @@ const signUpScreen=(props)=>{
                 <TextInput 
                     placeholder="Enter phone"
                     value={phone}
+                    keyboardType='number-pad'
                     onChangeText={(value)=>setPhone(value)}
                     style={style.input}
                 />
@@ -66,7 +67,7 @@ const signUpScreen=(props)=>{
                 if(email=="" || password =="" || name==""||  phone==""){
                    return  Alert.alert(
                        "Error Occured",
-                       "Please enter email or password or phone or name"
+                       "Any Feild cannot be left empty"
                     )
                 }
                 else if(email){
@@ -78,16 +79,22 @@ const signUpScreen=(props)=>{
                         )
                     }
                 }
-                props.dispatch(SignUpDetails(email,password,name,parseInt(phone,10)))               
+                props.dispatch(SignUpDetails({email,password,name,phone}))    
+                setEmail('')
+                setPassword('')
+                setName('')
+                setPhone('')           
             }
             }
             title="Submitt"
             style={{width:width*0.4}}/>
-            <Button 
+            {/* <Button 
                 title="Reset" 
+                style={{marginTop:40}}
                 onPress={()=>{
                     props.dispatch(ResetFunc())
-            }}/>
+                    
+            }}/> */}
             </ScrollView>            
         </View>
     )

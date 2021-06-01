@@ -1,7 +1,8 @@
 import { ActionSheetIOS } from 'react-native'
-import {SignupInitialState} from './initialState'
+import {AuthInitialState} from './initialState'
 
-export const AuthReducer=(state=SignupInitialState,action)=>{
+export const AuthReducer=(state=AuthInitialState,action)=>{
+    console.log("action.payload",action.payload)
     switch(action.type){
         case "SIGNUP":
             return {...state,name:action.payload.name,email:action.payload.email,password:action.payload.password,phone:action.payload.phone,isSignedUp:true}

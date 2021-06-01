@@ -9,13 +9,16 @@ const loginScreen=({dispatch,navigation,email,password,isLoggedIn})=>{
 
     const [useremail,setEmail]=useState('')
     const [userpassword,setPassword]=useState('')
+
+    console.log("email",email)
+    console.log('password',password)
    
     useEffect(()=>{
-        if (isLoggedIn){
+        console.log("logged in",isLoggedIn)
+        if (isLoggedIn==true){
             navigation.navigate('home')
         }    
     },[isLoggedIn])
-
     return (
         <View style={style.container}>
             <ScrollView keyboardShouldPersistTaps='handled'>
@@ -51,16 +54,17 @@ const loginScreen=({dispatch,navigation,email,password,isLoggedIn})=>{
                     Alert.alert("Error Occured","Credentials Invalid")
                 }
                 if (useremail===email && userpassword==password){
-                    dispatch(UserLoggedIn)
-                    navigation.navigate("home")
+                    dispatch(UserLoggedIn())   
+                    setEmail('')
+                    setPassword('')
                 }
             }}       
             title="Login"
             style={{width:width*0}}/>
             <Button 
-                title="Reset" 
+                title="SignUp" 
                 onPress={()=>{
-                    dispatch(ResetFunc())
+                    navigation.navigate('signup')
             }}/>
             </ScrollView>            
         </View>
@@ -87,7 +91,8 @@ const mapStateToProps=(state,props)=>{
     return {
         email:state.AuthReducer.email,
         password:state.AuthReducer.password,
-        isLoggedIn:state.AuthReducer.isLoggedIn
+        isLoggedIn:state.AuthReducer.isLoggedIn,
+        isSignedUp:state.AuthReducer.isSignedUp
     }
 }
 

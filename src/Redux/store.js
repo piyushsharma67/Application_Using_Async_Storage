@@ -5,13 +5,13 @@ import {persistReducer,persistStore} from 'redux-persist'
 import thunk from 'redux-thunk'
 
 const rootReducer = combineReducers({
-   AuthReducer
+   AuthReducer:AuthReducer
   });
   
   const persistConfig={
       key:'root',
       storage:AsyncStorage,
-      whitelist:['AuthReducer'],
+      whitelist:['AuthReducer']
   }
   
   const persistedReducer=persistReducer(persistConfig,rootReducer)

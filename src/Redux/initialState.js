@@ -1,4 +1,4 @@
-export const SignupInitialState={
+export const AuthInitialState={
     name:'',
     email:'',
     password:'',

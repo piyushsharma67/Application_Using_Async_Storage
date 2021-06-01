@@ -4,13 +4,14 @@ import Screens from './src/Navigation/stack_app_navigation'
 import {Provider} from 'react-redux'
 import {PersistGate} from 'redux-persist/integration/react'
 import {store,persistor} from './src/Redux/store'
+import { createStackNavigator, HeaderTitle } from '@react-navigation/stack'
 
 const app=()=>{
   return (
   <Provider store={store}>
      <PersistGate loading={null} persistor={persistor} >
-      <NavigationContainer>
-        <Screens />
+      <NavigationContainer>     
+        <Screens />    
       </NavigationContainer>
      </PersistGate>    
   </Provider>

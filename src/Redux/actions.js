@@ -6,9 +6,9 @@ const signUp=(data)=>{
 }
 
 
-export const SignUpDetails=(signUpDetails)=>{
+export const SignUpDetails=({email,password,name,phone})=>{
     return (dispatch)=>{
-        dispatch(signUp(signUpDetails))
+        dispatch(signUp({name,email,password,phone}))
     }
 }
 
